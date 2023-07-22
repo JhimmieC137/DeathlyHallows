@@ -66,14 +66,12 @@ class UserViewSet(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.Cre
         VERIFICATION_URL = build_absolute_uri(f"/api/v1/users/verify-email/?token={user.id}")
         message = "click following link to verify your email address: " + VERIFICATION_URL
         print(message)
-        # send_mail(
-        #         "Email Verification",  #Email subject
-        #         f"Hi, {user.username}" +"\n\t"+ message, #body
-        #           "noreply@gmail.com",  #sent from
-        #           [email],  #sent to
-        #           fail_silently=False)
-        
-        # user.is_emailverified=True #storing status as false since email hasn not being verified
+        send_mail(
+                "Email Verification",  #Email subject
+                f"Hi, {user.username}" +"\n\t"+ message, #body
+                  "noreply@gmail.com",  #sent from
+                  [email],  #sent to
+                  fail_silently=False)
         user.save()
         return f"{message}"
       
@@ -139,12 +137,12 @@ class UserViewSet(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.Cre
         PASSWORD_RESET_URL = build_absolute_uri(f"/api/v1/users/{user.id}/password-reset")
         message = "click following link to verify your email address: " + PASSWORD_RESET_URL
         print(message)
-        # send_mail(
-        #         "Email Verification",  #Email subject
-        #         f"Hi, {user.username}" +"\n\t"+ message, #body
-        #           "noreply@gmail.com",  #sent from
-        #           [email],  #sent to
-        #           fail_silently=False)
+        send_mail(
+                "Email Verification",  #Email subject
+                f"Hi, {user.username}" +"\n\t"+ message, #body
+                  "noreply@gmail.com",  #sent from
+                  [email],  #sent to
+                  fail_silently=False)
         
         user.is_emailverified=True #storing status as false since email hasn not being verified
         user.save()

@@ -71,7 +71,7 @@ MIDDLEWARE = (
     'social_django.middleware.SocialAuthExceptionMiddleware',
 )
 
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', '#p7&kxb7y^yq8ahfw5%$xh=f8=&1y*5+a5($8w_f7kw!-qig(j')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'm8%+0op!ce_3z6_u=39y*in@a^i4#x=^@$@pkxsz-j*f8bh)+k')
 ALLOWED_HOSTS = ["*"]
 ROOT_URLCONF = 'src.urls'
 WSGI_APPLICATION = 'src.wsgi.application'
