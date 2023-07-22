@@ -8,7 +8,8 @@ django-3-jet==1.0.8
 celery==4.4.7
 
 # For the persistence stores
-psycopg2==2.8.6
+# psycopg2==2.8.6
+psycopg-binary==3.1.9
 redis==3.5.3
 
 # Model Tools
@@ -18,6 +19,7 @@ django-summernote==0.8.11.6
 django-celery-beat==2.0.0
 django-activity-stream==0.10.0
 django-money==2.0
+django-phonenumber-field==7.1.0
 
 # Rest apis
 djangorestframework==3.12.4

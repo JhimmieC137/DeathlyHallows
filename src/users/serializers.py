@@ -14,9 +14,20 @@ class UserSerializer(serializers.ModelSerializer):
             'username',
             'first_name',
             'last_name',
+            'other_name',
+            'email',
+            'phone_number',
+            'gender',
+            'date_of_birth',
+            'house_address',
+            'city',
+            'state',
+            'bvn',
+            'is_bvnverified',
+            'is_emailverified',
             'profile_picture',
         )
-        read_only_fields = ('username',)
+        read_only_fields = ('username', 'is_emailverified',)
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
@@ -46,3 +57,51 @@ class CreateUserSerializer(serializers.ModelSerializer):
         )
         read_only_fields = ('tokens',)
         extra_kwargs = {'password': {'write_only': True}}
+
+
+class UpdateUserSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(max_length=50, required=False)
+    
+    class Meta:
+        model = User
+        fields = (
+                'username',
+                'first_name',
+                'last_name',
+                'other_name',
+                'date_of_birth',
+                'house_address',
+                'state',
+                'profile_picture',
+                'email',
+                'phone_number',
+                'bvn',
+            )
+            
+        
+        
+        
+class ValidUsernameSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(max_length=30, required=False)
+    class Meta:
+        model = User
+        fields = ('username',)
+        
+class RequestPasswordResetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ( 'email',)
+        
+class PasswordResetSerializer(serializers.ModelSerializer):
+    new_password = serializers.CharField(max_length=225, required=True)
+    
+    class Meta:
+        model = User
+        fields = ('new_password',)
+
+class LoginSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(max_length=255, min_length=4)
+    password = serializers.CharField(max_length=225, min_length=4, write_only=True)
+    class Meta:
+        model = User
+        fields = ('username','password',)
