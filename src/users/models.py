@@ -43,7 +43,7 @@ class User(AbstractUser):
     bvn = models.PositiveBigIntegerField(blank=True, null=True)
     is_bvnverified = models.BooleanField(default=False, null=True)#Will remain False until bvn is verified
     is_emailverified = models.BooleanField(default=False, null=True)#Will remain False until email is verified
-    # profile_picture = ThumbnailerImageField('ProfilePicture', upload_to='profile_pictures/', blank=True, null=True)
+    # profile_picture = ThumbnailerImageField('ProfilePicture', upload_to='profile_pictures/', blank=True, null=True) #Tryring to solve profile picture uploading issue
 
     def get_tokens(self):
         refresh = RefreshToken.for_user(self)
