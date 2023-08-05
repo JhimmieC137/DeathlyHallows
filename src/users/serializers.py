@@ -5,7 +5,7 @@ from src.common.serializers import ThumbnailerJSONSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
-    profile_picture = ThumbnailerJSONSerializer(required=False, allow_null=True, alias_target='src.users')
+    # profile_picture = ThumbnailerJSONSerializer(required=False, allow_null=True, alias_target='src.users')
 
     class Meta:
         model = User
@@ -25,13 +25,13 @@ class UserSerializer(serializers.ModelSerializer):
             'bvn',
             'is_bvnverified',
             'is_emailverified',
-            'profile_picture',
+            # 'profile_picture',
         )
         read_only_fields = ('username', 'is_emailverified',)
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
-    profile_picture = ThumbnailerJSONSerializer(required=False, allow_null=True, alias_target='src.users')
+    # profile_picture = ThumbnailerJSONSerializer(required=False, allow_null=True, alias_target='src.users')
     tokens = serializers.SerializerMethodField()
 
     def get_tokens(self, user):
@@ -53,7 +53,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
             'last_name',
             'email',
             'tokens',
-            'profile_picture',
+            # 'profile_picture',
         )
         read_only_fields = ('tokens',)
         extra_kwargs = {'password': {'write_only': True}}
@@ -72,7 +72,7 @@ class UpdateUserSerializer(serializers.ModelSerializer):
                 'date_of_birth',
                 'house_address',
                 'state',
-                'profile_picture',
+                # 'profile_picture',
                 'email',
                 'phone_number',
                 'bvn',
